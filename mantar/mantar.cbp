@@ -13,9 +13,11 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add library="tgui-d" />
+					<Add library="sfml-network-d" />
 					<Add library="sfml-graphics-d" />
 					<Add library="sfml-window-d" />
 					<Add library="sfml-system-d" />
@@ -28,10 +30,12 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
 					<Add library="tgui" />
+					<Add library="sfml-network" />
 					<Add library="sfml-graphics" />
 					<Add library="sfml-window" />
 					<Add library="sfml-system" />
@@ -54,8 +58,19 @@
 			<Add directory="C:/libraries/SFML-2.4.0/lib" />
 			<Add directory="C:/libraries/TGUI-0.7/lib" />
 		</Linker>
+		<Unit filename="include/DisplayStack.h" />
+		<Unit filename="include/Displayable.h" />
+		<Unit filename="include/Game.h" />
+		<Unit filename="include/Menu.h" />
+		<Unit filename="include/Network.h" />
+		<Unit filename="include/NetworkMessageHandler.h" />
 		<Unit filename="resources/images/cb.bmp" />
+		<Unit filename="src/DisplayStack.cpp" />
+		<Unit filename="src/Displayable.cpp" />
+		<Unit filename="src/Game.cpp" />
 		<Unit filename="src/Menu.cpp" />
+		<Unit filename="src/Network.cpp" />
+		<Unit filename="src/NetworkMessageHandler.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />
