@@ -22,7 +22,7 @@ class Game : public Displayable
 
     private:
         tgui::Gui gui;
-        Network network;
+        Network* network;
         DisplayStack* displayStack;
         //Map map;
 };

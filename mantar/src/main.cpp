@@ -11,11 +11,8 @@ int main()
 
     DisplayStack displayStack(&window);
 
-    Menu menu(&displayStack);
-    displayStack.add(&menu, false, false);
-    std::cout << &menu << std::endl;
-
-    std::cout << "testing before game loop" << std::endl;
+    std::shared_ptr<Displayable> menu(new Menu(&displayStack));
+    displayStack.add(menu, false, false);
 
     while (displayStack.isRunning()) {
         displayStack.run();

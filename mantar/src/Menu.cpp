@@ -9,6 +9,7 @@ Menu::Menu(DisplayStack* displayStack)
     tgui::Button::Ptr quitButton = tgui::Button::create("Quit");
 
 
+
     connectButton->connect("pressed", Menu::connect, this);
     quitButton->connect("pressed", [&](){this->displayStack->close();});
 
@@ -46,6 +47,7 @@ void Menu::draw(sf::RenderWindow* window)
 
 void Menu::connect()
 {
-    this->game = Game(displayStack);
-    displayStack->add(&game, false, false);
+    std::shared_ptr<Game> game (new Game(displayStack));
+    this->game = game;
+    displayStack->add(game, false, false);
 }

@@ -21,9 +21,11 @@ void DisplayStack::run()
     sf::Event event;
     while (window->pollEvent(event))
     {
-        std::cout << stack.size() << std::endl;
+        // Close window : exit
+        if (event.type == sf::Event::Closed)
+            this->close();
+
         for(int i = lowestActive; i < stack.size(); i++) {
-            Displayable* displayable = stack[i];
             stack[i]->processEvent(event);
         }
     }
@@ -38,7 +40,7 @@ void DisplayStack::run()
 
     for (int i = stack.size() - 1; i > 0; i--) {
         if (!visible[i]) {
-            lowestActive = i;
+            lowestVisible = i;
             break;
         }
     }
@@ -46,14 +48,15 @@ void DisplayStack::run()
     window->clear();
 
     for (int i = lowestVisible; i < stack.size(); i++) {
+        std::cout << "drawing: " << i << std::endl;
+        std::shared_ptr<Displayable> gui = stack[i];
         stack[i]->draw(window);
     }
 
-    std::cout << "displaying" << std::endl;
     window->display();
 }
 
-void DisplayStack::add(Displayable* displayable, bool active, bool visible)
+void DisplayStack::add(std::shared_ptr<Displayable> displayable, bool active, bool visible)
 {
     stack.push_back(displayable);
     std::cout << stack.size() << std::endl;
@@ -79,7 +82,6 @@ void DisplayStack::popLast()
         stack.pop_back();
     }
 }
-
 
 void DisplayStack::close()
 {

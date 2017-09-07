@@ -2,7 +2,8 @@
 
 Game::Game(DisplayStack* displayStack)
 {
-    network.connect("127.0.0.1", 25500);
+    this->network = new Network(displayStack);
+    network->connect("127.0.0.1", 25500);
     this->displayStack = displayStack;
     gui.setWindow(*displayStack->getWindow());
 }

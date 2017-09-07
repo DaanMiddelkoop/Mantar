@@ -22,7 +22,7 @@ class Menu : public Displayable
     private:
         tgui::Gui gui;
         DisplayStack* displayStack;
-        Game game;
+        std::shared_ptr<Game> game;
 };
 
 #endif // MENU_H

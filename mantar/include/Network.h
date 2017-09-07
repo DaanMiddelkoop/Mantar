@@ -3,18 +3,21 @@
 
 #include <NetworkMessageHandler.h>
 #include <SFML/Network.hpp>
+#include <DisplayStack.h>
 
 class Network
 {
     public:
-        Network();
+        Network(DisplayStack* displayStack);
         void connect(std::string ip, int port);
-        void setMessageHandler(NetworkMessageHandler*);
+
+        template<typename Func, typename... Args>
+        void showMessage(std::string, Func, Args...);
 
     protected:
     private:
-        NetworkMessageHandler* messageHandler;
         sf::TcpSocket socket;
+        DisplayStack* displayStack;
 };
 
 #endif // NETWORK_H
